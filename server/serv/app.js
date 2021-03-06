@@ -14,10 +14,10 @@ mongoose.connect(
 const dbConnection = mongoose.connection;
 
 dbConnection.on("error", (err) => console.log("ERROR connect " + err));
-dbConnection.once("open", () => console.log("Connect"));
+dbConnection.once("open", () => console.log("Connect to Data Base films"));
 
 app.use("/graphql", graphqlHTTP({ schema, graphiql: true }));
 
 app.listen(PORT, (err) =>
-  err ? console.log(error) : console.log(`Server started on ${PORT} port`)
+  err ? console.log(error) : console.log(`Server started on ${PORT} port\nhttp://localhost:5000/`)
 );

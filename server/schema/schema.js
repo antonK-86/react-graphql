@@ -19,7 +19,9 @@ const directors = [
 ];
 
 const graphQL = require("graphql");
+
 //console.log(graphQL);
+
 const {
   GraphQLSchema,
   GraphQLObjectType,
@@ -29,6 +31,12 @@ const {
   GraphQLList,
 } = graphQL;
 
+const Movies = require("../models/movies")  //экземпляры mongoose схемы
+const Directors = require("../models/directors")
+
+
+
+
 /*описание схемы*/
 const MovieType = new GraphQLObjectType({
   name: "Movie",
@@ -36,6 +44,13 @@ const MovieType = new GraphQLObjectType({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     genre: { type: GraphQLString },
+    director: {
+      type:DirectorType,
+      resolve(parent, args) {
+       // return directors.find(d=>d.id==parent.id) // для локальных коллекций movies и directors 
+       return Directors.findById(parent.directorId) // метод findById предоставляется библиотекой mongoose
+      }
+    }
   }),
 });
 
@@ -49,7 +64,8 @@ const DirectorType = new GraphQLObjectType({
       //для сопоставления с movies
       type: new GraphQLList(MovieType),
       resolve(parent, args) {
-        return movies.filter((m) => m.directorId == parent.id);
+        //return movies.filter((m) => m.directorId == parent.id);// для локальных коллекций movies и directors 
+        return Movies.find({directorId:parent.id})
       },
     },
   }),
@@ -68,7 +84,8 @@ const Query = new GraphQLObjectType({
       },
       resolve(parent, args) {
         //логика того, какие данные должны возвращаться
-        return movies.find((m) => m.id == args.id);
+        //return movies.find((m) => m.id == args.id);// для локальных коллекций movies и directors 
+        return Movies.findById(args.id)
       },
     },
     director: {
@@ -77,19 +94,22 @@ const Query = new GraphQLObjectType({
         id: { type: GraphQLID },
       },
       resolve(parent, args) {
-        return directors.find((d) => d.id == args.id);
+        //return directors.find((d) => d.id == args.id);// для локальных коллекций movies и directors 
+        return Directors.findById(args.id)
       },
     },
     movies: {
       type: new GraphQLList(MovieType),
       resolve(parent, args) {
-        return movies;
+        //return movies;// для локальных коллекций movies и directors 
+        return Movies.find({})
       },
     },
     directors: {
       type: new GraphQLList(DirectorType),
       resolve(parent, args) {
-        return directors;
+        //return directors;// для локальных коллекций movies и directors 
+        return Directors.find({})
       },
     },
   },

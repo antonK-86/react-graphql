@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 //сщздаем схему взаимодействия mongoose
-const moviesSchema = new Schema({
+const movieSchema = new Schema({
   name: String,
   genre: String,
-  directorId: Number,
+  directorId: String,
 });
 
-module.exports = mongoose.model("Movies", moviesSchema);
+module.exports = mongoose.model("Movie", movieSchema);
