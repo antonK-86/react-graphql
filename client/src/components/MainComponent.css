@@ -7,16 +7,5 @@
     margin: 0 auto;
     background-color: blanchedalmond;
     display: flex;
-}
-
-.main-component__movies{
-    background-color:cornflowerblue;
-    width: 50%;
-    text-align: center;
-}
-
-.main-component__directors{
-    background-color: cyan;
-    width: 50%;
-    text-align: center;
+    flex-direction: column;
 }

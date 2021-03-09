@@ -1,0 +1,9 @@
+.nav{
+    background-color:cornflowerblue;
+    width: 100%;
+    display: flex;
+}
+
+.btn-nav{
+    width: 50%;
+}
