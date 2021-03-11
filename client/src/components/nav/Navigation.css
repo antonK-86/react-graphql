@@ -5,5 +5,18 @@
 }
 
 .btn-nav{
+    color: #fff; /* цвет текста */
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    background: rgb(81,92,102); /* фон кнопки */
+    padding: .5em 1.5em; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+    border: none;
     width: 50%;
 }
+
+.btn-nav:hover { background: rgb(120, 130, 138); } /* при наведении курсора мышки */
+.btn-nav:active { background: rgb(41, 28, 26); } /* при нажатии */
+.btn-nav-active {background: rgb(105, 110, 114);}
