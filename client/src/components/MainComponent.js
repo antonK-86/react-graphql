@@ -49,17 +49,25 @@ const data = {
     ]
 }
 
+
+
 const MainComponent = ()=>{
+    
+    const styleC = {
+    textAlign: 'center',
+    height: '50px'
+  }
     const [selectContent, setSelectContent] = useState("movies")
 
     const handleNavSelect =(event)=>{
-        //event.preventDefault()
-        //console.log(event.target.name);
         setSelectContent(event.target.name)
     }
 
     return (
         <div className="main-component">
+            <header className="header" style={styleC}>
+        <h1>React App with GraphQl </h1>
+      </header>
             <div className="container">
                 <div className="main-component__header">
                     <Navigation onNavChange={handleNavSelect} selectContent={selectContent}/>
@@ -69,6 +77,7 @@ const MainComponent = ()=>{
                         selectContent === "movies" ? <Movies data={data.movies} title="Фильмы"/> : <Directors data={data.directors} title="Режисеры"/>
                     }
                 </div>
+                <div className="main-component__pagination">PAGINATION</div>
             </div>
         </div>
     )

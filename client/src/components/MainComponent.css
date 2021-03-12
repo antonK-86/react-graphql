@@ -1,13 +1,16 @@
 .main-component{
     background-color: rgb(226, 220, 220);
+    height: 100vh;
 }
 
 .container {
     max-width: 1080px;
+    height: calc(100% - 100px);
     margin: 0 auto;
-    background-color: blanchedalmond;
+    background-color: rgb(205, 195, 216);
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 /****************************/
@@ -21,7 +24,8 @@ table {
     background-color: rgb(177, 152, 152);
 }
 
-thead th:nth-child(1){
+
+/* thead th:nth-child(1){
     width: 30%;
 }
 
@@ -31,7 +35,7 @@ thead th:nth-child(2){
 
 thead th:nth-child(3){
     width: 40%;
-}
+} */
 
 th, td {
     padding:  5px 20px;
@@ -65,4 +69,71 @@ caption {
     font-size: 20px;
     letter-spacing: 1px;
     color: rgb(82, 73, 73);
+}
+
+.main-component__pagination{
+    background-color: burlywood;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn-add{
+    position: absolute;
+    bottom: 100px;
+    right: 50px;
+    display: inline-block;
+    background-color: rgb(160, 89, 104);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 35px;
+    font-weight: bold;
+    color: rgb(87, 44, 87);
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(138, 14, 14, 0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(138, 14, 14, 0.75);
+    box-shadow: 0px 0px 5px 0px rgba(138, 14, 14, 0.75);
+    transition: all 0.4s ease;
+}
+
+.btn-add:hover{
+    /* transform: translateY(2px); */
+    transform: scale(0.9);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(138, 14, 14, 0.7);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(138, 14, 14, 0.7);
+    box-shadow: 0px 0px 15px 0px rgba(138, 14, 14, 0.7);
+}
+
+.btn-edit{
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.btn-edit:hover{
+    transform: scale(0.9);
+}
+
+.prompt-on-btn {
+    width: 110px;
+}
+
+.prompt-on-btn_edit{
+    background-color: rgb(83, 79, 79);
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s linear;
+}
+
+.prompt-on-btn_edit:hover{
+    background-color: rgb(236, 232, 232);
+    color: rgb(83, 79, 79);;
 }
