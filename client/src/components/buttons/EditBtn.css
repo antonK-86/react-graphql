@@ -1,0 +1,35 @@
+.btn-edit-container{
+    position: relative;
+
+}
+
+
+.btn-edit-container_btn-edit{
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.btn-edit-container_btn-edit:hover{
+    transform: scale(0.9);
+}
+
+.prompt-on-btn {
+    width: 110px;
+    border-radius: 3px;
+    overflow: hidden;
+    position: absolute;
+    top: -30px;
+    right: -70px;
+}
+
+.prompt-on-btn_mode{
+    background-color: rgb(83, 79, 79);
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s linear;
+}
+
+.prompt-on-btn_mode:hover{
+    background-color: rgb(236, 232, 232);
+    color: rgb(83, 79, 79);;
+}

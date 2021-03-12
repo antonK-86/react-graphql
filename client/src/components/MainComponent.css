@@ -112,28 +112,3 @@ caption {
     -moz-box-shadow: 0px 0px 15px 0px rgba(138, 14, 14, 0.7);
     box-shadow: 0px 0px 15px 0px rgba(138, 14, 14, 0.7);
 }
-
-.btn-edit{
-    cursor: pointer;
-    transition: all 0.4s ease;
-}
-
-.btn-edit:hover{
-    transform: scale(0.9);
-}
-
-.prompt-on-btn {
-    width: 110px;
-}
-
-.prompt-on-btn_edit{
-    background-color: rgb(83, 79, 79);
-    cursor: pointer;
-    color: white;
-    transition: all 0.3s linear;
-}
-
-.prompt-on-btn_edit:hover{
-    background-color: rgb(236, 232, 232);
-    color: rgb(83, 79, 79);;
-}

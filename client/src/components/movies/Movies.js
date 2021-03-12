@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useSortableData from "../hooks/useSortableData";
-import btnEdit from "../assets/img/btnedit.png";
 import AddMovie from "../modals/AddMovie";
+import EditBtn from "../buttons/EditBtn";
 
 const Movies = (props) => {
   const data = props.data;
@@ -36,16 +36,7 @@ const Movies = (props) => {
               <td>{movie.genre}</td>
               <td>{movie.directorId}</td>
               <td>
-                <img
-                  className="btn-edit"
-                  src={btnEdit}
-                  width="32px"
-                  height="32px"
-                />
-                <div className="prompt-on-btn">
-                    <div  className="prompt-on-btn_edit">Изменить</div>
-                    <div  className="prompt-on-btn_edit">Удалить</div>
-                </div>
+               <EditBtn/>
               </td>
             </tr>
           ))}

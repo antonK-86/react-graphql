@@ -1,6 +1,7 @@
 import React from "react";
 import useSortableData from "../hooks/useSortableData";
 import btnEdit from "../assets/img/btnedit.png";
+import EditBtn from "../buttons/EditBtn";
 
 const Directors = (props)=>{
     const data = props.data
@@ -28,7 +29,7 @@ const Directors = (props)=>{
                         <td>{director.name}</td>
                         <td>{director.age}</td>
                         <td>movies list</td>
-                        <td><img className="btn-edit" src={btnEdit} width="32px" height="32px"/></td>
+                        <td><EditBtn/></td>
                     </tr>
                 ))} 
                 </tbody>
