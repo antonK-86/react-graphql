@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import useSortableData from "../hooks/useSortableData";
 import AddMovie from "../modals/AddMovie";
-import EditBtn from "../buttons/EditBtn"; 
-import graphql from "apollo-boost";
-import moviesQuery from "./queries"
-
-const queri = graphql(moviesQuery)
+import EditBtn from "../buttons/EditBtn";
 
 const Movies = (props) => {
-  console.log(props.data)
-  const data = props.dat;
-
+  const data = props.data;
   const { sortedItems, requestSort } = useSortableData(data);
 
   const [isAddMovie, setIsAddMovie] = useState(false);
@@ -39,9 +33,9 @@ const Movies = (props) => {
               <td>{index + 1}</td>
               <td>{movie.name}</td>
               <td>{movie.genre}</td>
-              <td>{movie.directorId}</td>
+              <td>{movie.director.name}</td>
               <td>
-               <EditBtn/>
+                <EditBtn />
               </td>
             </tr>
           ))}
@@ -55,4 +49,4 @@ const Movies = (props) => {
   );
 };
 
-export default queri(Movies);
+export default Movies;
