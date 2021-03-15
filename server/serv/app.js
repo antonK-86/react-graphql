@@ -2,6 +2,7 @@ const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("../schema/schema");
 const mongoose = require("mongoose");
+const cors=require("cors"); //для разрешения соединения клиента с сервером
 
 const app = express();
 const PORT = 5000;
@@ -16,6 +17,7 @@ const dbConnection = mongoose.connection;
 dbConnection.on("error", (err) => console.log("ERROR connect " + err));
 dbConnection.once("open", () => console.log("Connect to Data Base films"));
 
+app.use(cors());
 app.use("/graphql", graphqlHTTP({ schema, graphiql: true }));
 
 app.listen(PORT, (err) =>

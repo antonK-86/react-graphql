@@ -74,7 +74,7 @@ const MainComponent = ()=>{
                 </div>
                 <div className="main-component__content content">
                     {
-                        selectContent === "movies" ? <Movies data={data.movies} title="Фильмы"/> : <Directors data={data.directors} title="Режисеры"/>
+                        selectContent === "movies" ? <Movies dat={data.movies} title="Фильмы"/> : <Directors data={data.directors} title="Режисеры"/>
                     }
                 </div>
                 <div className="main-component__pagination">PAGINATION</div>

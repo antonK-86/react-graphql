@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import useSortableData from "../hooks/useSortableData";
 import AddMovie from "../modals/AddMovie";
-import EditBtn from "../buttons/EditBtn";
+import EditBtn from "../buttons/EditBtn"; 
+import graphql from "apollo-boost";
+import moviesQuery from "./queries"
+
+const queri = graphql(moviesQuery)
 
 const Movies = (props) => {
-  const data = props.data;
+  console.log(props.data)
+  const data = props.dat;
 
   const { sortedItems, requestSort } = useSortableData(data);
 
@@ -50,4 +55,4 @@ const Movies = (props) => {
   );
 };
 
-export default Movies;
+export default queri(Movies);
