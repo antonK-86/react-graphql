@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery, gql } from "@apollo/client";
 import Movies from "./Movies";
 
-const GetMovies = gql`
+export const GetMovies = gql`
   query GetMovies {
     movies {
       id

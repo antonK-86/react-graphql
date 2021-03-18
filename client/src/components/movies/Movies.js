@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import useSortableData from "../hooks/useSortableData";
-import AddMovie from "../modals/AddMovie";
 import EditBtn from "../buttons/EditBtn";
+import AddMovieForm from "../modals/AddMovieForm";
 
 const Movies = (props) => {
   const data = props.data;
   const { sortedItems, requestSort } = useSortableData(data);
 
+   //для отслеживания открытия модального окна(формы) добавления фильма
   const [isAddMovie, setIsAddMovie] = useState(false);
   const [isEditMovie, setIsEditMovie] = useState(false);
 
-  const openModalAdd = (val) => {
-    setIsAddMovie(val);
+  const openModalAdd = (value) => {
+    setIsAddMovie(value);
   };
 
   return (
@@ -29,11 +30,11 @@ const Movies = (props) => {
         </thead>
         <tbody>
           {sortedItems.map((movie, index) => (
-            <tr key={movie.name}>
+            <tr key={movie.id}>
               <td>{index + 1}</td>
               <td>{movie.name}</td>
               <td>{movie.genre}</td>
-              <td>{movie.director.name}</td>
+              <td>{""}</td>
               <td>
                 <EditBtn />
               </td>
@@ -44,7 +45,7 @@ const Movies = (props) => {
       <div className="btn-add" onClick={() => openModalAdd(true)}>
         +
       </div>
-      {isAddMovie ? <AddMovie openModalAdd={openModalAdd} /> : null}
+      {isAddMovie ? <AddMovieForm openModalAdd={openModalAdd} /> : null}
     </div>
   );
 };

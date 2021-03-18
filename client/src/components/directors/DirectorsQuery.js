@@ -2,13 +2,14 @@ import React from "react";
 import { useQuery, gql } from "@apollo/client";
 import Directors from "./Directors";
 
-const GetDirectors = gql`
+export const GetDirectors = gql`
   query GetDirectors {
     directors {
       id
       name
       age
       movies {
+        id
         name
       }
     }
