@@ -78,7 +78,7 @@ const MainComponent = () => {
             <DirectorsQuery title="Режисеры" />
           )}
         </div>
-        <div className="main-component__pagination">PAGINATION</div>
+        {/* <div className="main-component__pagination">PAGINATION</div> */}
       </div>
     </div>
   );

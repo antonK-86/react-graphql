@@ -11,7 +11,7 @@ const EditBtn = (props) => {
   }
 
   const handleClickDel=()=>{
-    props.openDelDirectorConfirm(true);
+    props.openDelElemConfirm(true, props.id);
     setIsShowPrompt(false)
   }
 

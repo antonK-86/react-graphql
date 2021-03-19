@@ -37,7 +37,8 @@
 }
 
 
-.modal-form__input-block  input{
+.modal-form__input-block  input, .modal-form__input-block  select{
+        width: 220px;
         font-size: 13px;
         margin-bottom:10px ;
         padding: 6px 0 4px 10px;
@@ -74,7 +75,7 @@
   .close {
       display: inline-block;
       position: absolute;
-      top: 20px;
+      top: 10px;
       right: 20px;
       cursor: pointer;
   }

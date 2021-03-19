@@ -19,3 +19,7 @@ h1, p {
 .app{
   height: 100vh;
 }
+
+*{
+  box-sizing: border-box;
+}

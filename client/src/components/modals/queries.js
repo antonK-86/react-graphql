@@ -17,3 +17,19 @@ export const AddMovie = gql`
     }
   }
 `;
+
+export const DeleteDirector = gql`
+  mutation deleteDirector($id: ID!) {
+    deleteDirector(id: $id) {
+      id
+    }
+  }
+`;
+
+export const DeleteMovie = gql`
+  mutation deleteMovie($id: ID!) {
+    deleteMovie(id: $id) {
+      id
+    }
+  }
+`;

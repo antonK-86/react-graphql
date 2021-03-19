@@ -2,17 +2,40 @@ import React, { useState } from "react";
 import useSortableData from "../hooks/useSortableData";
 import EditBtn from "../buttons/EditBtn";
 import AddMovieForm from "../modals/AddMovieForm";
+import { DeleteMovie } from "../modals/queries";
+import { useMutation } from '@apollo/client';
+import { GetMovies } from "./MoviesQuery";
+import DeleteElement from "../modals/deleteElement/delElement";
 
 const Movies = (props) => {
   const data = props.data;
   const { sortedItems, requestSort } = useSortableData(data);
 
-   //для отслеживания открытия модального окна(формы) добавления фильма
+  //для отслеживания открытия модального окна(формы) добавления фильма
   const [isAddMovie, setIsAddMovie] = useState(false);
-  const [isEditMovie, setIsEditMovie] = useState(false);
+
+  const [isDelMovie, setIsDelMovie] = useState(false);
+
+  //для получения id элемента для изменения и удаления
+  const [id, setId] = useState(null);
+
+  const [deleteMovie, { delData }] = useMutation(DeleteMovie);
 
   const openModalAdd = (value) => {
     setIsAddMovie(value);
+  };
+
+  const openDelConfirm = (value, id) => {
+    setIsDelMovie(value);
+    setId(id);
+  };
+
+  const handleDelElement = () => {
+    deleteMovie({
+      variables: { id },
+      refetchQueries: [{ query: GetMovies }],
+    }); // refetchQueries - для получения новых данных и их отрисовка
+    setIsDelMovie(false);
   };
 
   return (
@@ -34,9 +57,9 @@ const Movies = (props) => {
               <td>{index + 1}</td>
               <td>{movie.name}</td>
               <td>{movie.genre}</td>
-              <td>{""}</td>
+              <td>{movie.director && movie.director.name}</td> 
               <td>
-                <EditBtn />
+                <EditBtn openDelElemConfirm={openDelConfirm} isMovie={true} id={movie.id}/>
               </td>
             </tr>
           ))}
@@ -46,8 +69,11 @@ const Movies = (props) => {
         +
       </div>
       {isAddMovie ? <AddMovieForm openModalAdd={openModalAdd} /> : null}
+      {isDelMovie ? <DeleteElement openDelConfirm={openDelConfirm} handleDelElement={handleDelElement}/> : null}
     </div>
   );
 };
 
 export default Movies;
+
+
