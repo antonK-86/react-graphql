@@ -6,6 +6,7 @@ import { DeleteMovie } from "../modals/queries";
 import { useMutation } from '@apollo/client';
 import { GetMovies } from "./MoviesQuery";
 import DeleteElement from "../modals/deleteElement/delElement";
+import QueryGetMovie from "../modals/editElement/QuerieGetMovie";
 
 const Movies = (props) => {
   const data = props.data;
@@ -13,7 +14,7 @@ const Movies = (props) => {
 
   //для отслеживания открытия модального окна(формы) добавления фильма
   const [isAddMovie, setIsAddMovie] = useState(false);
-
+  const [isEditMovie, setIsEditMovie] = useState(false);
   const [isDelMovie, setIsDelMovie] = useState(false);
 
   //для получения id элемента для изменения и удаления
@@ -23,6 +24,11 @@ const Movies = (props) => {
 
   const openModalAdd = (value) => {
     setIsAddMovie(value);
+  };
+
+  const openModalEdit = (value,id) => {
+    setIsEditMovie(value);
+    setId(id);
   };
 
   const openDelConfirm = (value, id) => {
@@ -59,7 +65,7 @@ const Movies = (props) => {
               <td>{movie.genre}</td>
               <td>{movie.director && movie.director.name}</td> 
               <td>
-                <EditBtn openDelElemConfirm={openDelConfirm} isMovie={true} id={movie.id}/>
+                <EditBtn openDelElemConfirm={openDelConfirm} openModalEdit={openModalEdit} isMovie={true} id={movie.id}/>
               </td>
             </tr>
           ))}
@@ -69,6 +75,7 @@ const Movies = (props) => {
         +
       </div>
       {isAddMovie ? <AddMovieForm openModalAdd={openModalAdd} /> : null}
+      {isEditMovie ? <QueryGetMovie openModalEdit={openModalEdit} id={id}/> : null}
       {isDelMovie ? <DeleteElement openDelConfirm={openDelConfirm} handleDelElement={handleDelElement}/> : null}
     </div>
   );

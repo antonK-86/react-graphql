@@ -10,6 +10,12 @@ const EditBtn = (props) => {
     setTimeout(()=>setIsShowPrompt(false), 3000)
   }
 
+  const handleClickEdit=()=>{
+    props.openModalEdit(true, props.id);
+    setIsShowPrompt(false)
+  }
+  
+
   const handleClickDel=()=>{
     props.openDelElemConfirm(true, props.id);
     setIsShowPrompt(false)
@@ -25,7 +31,7 @@ const EditBtn = (props) => {
         onClick ={showPrompt}
       />
       {isShowPrompt ? (<div className="btn-edit-container__prompt-on-btn prompt-on-btn">
-        <div className="prompt-on-btn_mode">Изменить</div>
+        <div className="prompt-on-btn_mode" onClick={handleClickEdit}>Изменить</div>
         <div className="prompt-on-btn_mode" onClick={handleClickDel}>Удалить</div>
       </div>) : null
       }

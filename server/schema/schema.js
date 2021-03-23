@@ -1,26 +1,24 @@
-//тестовые данные
-const movies = [
-  //коллекция
-  { id: 1, name: "Record", genre: "Crime", directorId: 2 },
-  { id: 2, name: "Destr", genre: "Trash", directorId: 2 },
-  { id: 3, name: "Springs", genre: "Melo", directorId: 4 },
-  { id: 4, name: "Lovers", genre: "Ero", directorId: 3 },
-  { id: 5, name: "Alien", genre: "Trash", directorId: 2 },
-  { id: 6, name: "Simps", genre: "Comedy", directorId: 4 },
-  { id: 7, name: "Night", genre: "Fear", directorId: 1 },
-];
+// //тестовые данные
+// const movies = [
+//   //коллекция
+//   { id: 1, name: "Record", genre: "Crime", directorId: 2 },
+//   { id: 2, name: "Destr", genre: "Trash", directorId: 2 },
+//   { id: 3, name: "Springs", genre: "Melo", directorId: 4 },
+//   { id: 4, name: "Lovers", genre: "Ero", directorId: 3 },
+//   { id: 5, name: "Alien", genre: "Trash", directorId: 2 },
+//   { id: 6, name: "Simps", genre: "Comedy", directorId: 4 },
+//   { id: 7, name: "Night", genre: "Fear", directorId: 1 },
+// ];
 
-const directors = [
-  //коллекция, относится к movies
-  { id: 1, name: "Viktor", age: "89" },
-  { id: 2, name: "Klop", age: "34" },
-  { id: 3, name: "Bykov", age: "50" },
-  { id: 4, name: "Drey", age: "65" },
-];
+// const directors = [
+//   //коллекция, относится к movies
+//   { id: 1, name: "Viktor", age: "89" },
+//   { id: 2, name: "Klop", age: "34" },
+//   { id: 3, name: "Bykov", age: "50" },
+//   { id: 4, name: "Drey", age: "65" },
+// ];
 
 const graphQL = require("graphql");
-
-//console.log(graphQL);
 
 const {
   GraphQLSchema,
@@ -138,17 +136,17 @@ const Mutation = new GraphQLObjectType({
       type:MovieType,
       args:{
         id:{type:GraphQLID},
-        name:{type: new GraphQLNonNull(GraphQLString)},
-        genre:{type: new GraphQLNonNull(GraphQLInt)},
+        name:{type: GraphQLString},
+        genre:{type: GraphQLString},
         directorId:{type:GraphQLID}
       },
       resolve(parent,args){
-        return Movie.findByIdAndUpdate(args.id, {
+        return Movies.findByIdAndUpdate(args.id, {
             $set: {
               name: args.name,
               genre:args.genre,
               directorId:args.directorId
-            }, 
+            }
           }, 
           {new:true}
         )

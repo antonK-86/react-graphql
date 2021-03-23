@@ -1,41 +1,27 @@
-import React, { useState } from "react";
-import "./AddElementForm.css";
-import close from "../assets/img/close.png";
-import { GetDirectors } from "../directors/DirectorsQuery";
-import { useMutation, useQuery } from "@apollo/client";
-import { AddMovie } from "./queries";
-import { GetMovies } from "../movies/MoviesQuery";
+import React, {useState } from "react";
+import "../AddElementForm.css";
+import close from "../../assets/img/close.png";
+import { useMutation} from "@apollo/client";
+import { UpdateMovie} from "../queries";
+import { GetMovies } from "../../movies/MoviesQuery";
+import {SelectDirector} from "../AddMovieForm"
 
-export const SelectDirector = ({handleChange, movieDirector}) => {
-  const { loading, error, data } = useQuery(GetDirectors);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-  let id = null
-  let name = null
-  if (movieDirector) {id=movieDirector.id; name=movieDirector.name}
-  const items = data.directors;
-  return (
-    <label>
-      <p>Выберете режисера</p>
-      <select name="directors" onChange={handleChange}>
-        <option name="null" value={id}>{name}</option>
-        {items.map((d) => {
-          return <option name={d.name} value={d.id} key={d.id}>{d.name}</option>;
-        })}
-      </select>
-    </label>
-  );
-};
 
-const AddMovieForm = (props) => {
-  const [name, setName] = useState("");
-  const [genre, setGenre] = useState("");
+const EditElement = ({dataMovie, attr}) => {
+  console.log(dataMovie);
+
+  const id = attr.id;
+  const [name, setName] = useState(dataMovie.name);
+  const [genre, setGenre] = useState(dataMovie.genre);
+
   const [directorId, setDirectorId] = useState(null);
+  // //флаг изменить режисера или нет
+  // const [isEditDirector, setIsEditDirector] = useState(false);
 
-  const [addMovie, { data }] = useMutation(AddMovie);
+  const [updateMovie, { data }] = useMutation(UpdateMovie);
 
   const closeModal = () => {
-    props.openModalAdd(false);
+    attr.openModalEdit(false);
   };
 
   const handleChange=(e)=>{
@@ -44,11 +30,11 @@ const AddMovieForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addMovie({
-      variables: { name, genre, directorId },
+    updateMovie({
+      variables: { id, name, genre, directorId },
       refetchQueries: [{ query: GetMovies }],
     }); // refetchQueries - для получения новых данных и их отрисовка
-    props.openModalAdd(false);
+    attr.openModalEdit(false);
   };
 
   return (
@@ -74,7 +60,12 @@ const AddMovieForm = (props) => {
             />
           </div>
           <div className="modal-form__input-block">
-            <SelectDirector handleChange={handleChange}/>
+            {/* {!isEditDirector ? (
+              <div onClick={() => setIsEditDirector(true)}>Режисер<p>{dataMovie.director? dataMovie.director.name : null}</p></div>
+            ) : (
+              <SelectDirector value ={directorId}/>
+            )} */}
+            <SelectDirector handleChange={handleChange} movieDirector ={dataMovie.director ? dataMovie.director : null}/> 
           </div>
           <button type="submit" className="pressed-button">
             Add movie
@@ -88,4 +79,4 @@ const AddMovieForm = (props) => {
   );
 };
 
-export default AddMovieForm;
+export default EditElement;

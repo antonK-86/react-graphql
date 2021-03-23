@@ -73,3 +73,23 @@ Query Variables
   "genre":"genre test",
   "directorId": "32412341234123dfwfdqw"
 }
+
+/****************************/
+
+mutation($id: ID, $name: String!, $genre: String!, $directorId: ID){
+  updateMovie(id:$id, name:$name, genre:$genre, directorId:$directorId){
+    id
+    name
+    genre
+    director {
+      name
+    }
+  }
+}
+Query Variables
+{
+  "id":"6058a5710231e6156c42bf29",
+  "name": "Test1",
+  "genre": "Test2",
+  "directorId":  "6047408c3f57490ea4b0ee69"
+}
