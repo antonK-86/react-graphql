@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import Movies from "./Movies";
+import Pagination from "../pagination/Pagination";
 
 export const GetMovies = gql`
   query GetMovies {
@@ -19,13 +20,32 @@ export const GetMovies = gql`
 
 const MoviesQuery = (props) => {
   const { loading, error, data } = useQuery(GetMovies);
-
+  const [activePage,setActivePage] = useState(2) 
+  
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
+  const allItemsCount = data.movies.length;
+  const onPageItemsCount = 10;
+  const pagesCount = Math.round(allItemsCount/onPageItemsCount) 
+  const start = activePage - 1
+
+  const changePageHandler = (page)=>{
+    setActivePage(page);
+  }
+
+  const moviesList = data.movies.filter((item,index)=>{
+    if(index < onPageItemsCount*activePage && index>=onPageItemsCount*start) {
+      return item
+    }
+  }) //список выводимых фильмов
+  
   return (
     <>
-      <Movies title={props.title} data={data.movies} />
+      <Movies title={props.title} data={moviesList} />
+      <div className="main-component__pagination">
+        <Pagination pagesCount={pagesCount} changePageHandler={changePageHandler}/>
+      </div>
     </>
   );
 };
