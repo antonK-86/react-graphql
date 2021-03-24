@@ -10,7 +10,6 @@ const QueryGetMovie = (props) => {
   if (loading) return <p>Loading...</p>
   return (
     <>
-      {/* {data && <EditElement dataMovie={data.movie} attr={props}/>} */}
       <EditElement dataMovie={data.movie} attr={props}/>
     </>
   );

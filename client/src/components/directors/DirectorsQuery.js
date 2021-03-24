@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
 import Directors from "./Directors";
+import EditDirector from "../modals/editElement/EditDirector";
+import { GetDirector } from "../modals/queries";
 
 export const GetDirectors = gql`
   query GetDirectors {
@@ -16,7 +18,7 @@ export const GetDirectors = gql`
   }
 `;
 
-const DirectorsQuery = (props) => {
+export const GetDirectorsQuery = (props) => {
   const { loading, error, data } = useQuery(GetDirectors);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -28,4 +30,14 @@ const DirectorsQuery = (props) => {
   );
 };
 
-export default DirectorsQuery;
+export const GetDirectorQuery = ({openModalEdit,directorId}) => {
+  const { loading, error, data } = useQuery(GetDirector,{variables:{id:directorId}});
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  return (
+    <>
+      <EditDirector data={data.director} openModalEdit={openModalEdit}/>
+    </>
+  );
+};

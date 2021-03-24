@@ -69,3 +69,12 @@ mutation UpdateMovie($id:ID,$name: String!, $genre: String!, $directorId: ID) {
   }
 }
 `;
+
+export const UpdateDirector= gql`
+mutation UpdateDirector($id:ID,$name: String!, $age: Int!) {
+  updateDirector(id:$id, name: $name, age: $age){
+   name
+  }
+}
+`;
+

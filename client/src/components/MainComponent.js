@@ -1,52 +1,8 @@
 import React, { useState } from "react";
-import DirectorsQuery from "./directors/DirectorsQuery";
+import {GetDirectorsQuery} from "./directors/DirectorsQuery";
 import "./MainComponent.css";
 import MoviesQuery from "./movies/MoviesQuery";
 import Navigation from "./nav/Navigation";
-
-const data = {
-  directors: [
-    {
-      name: "Кристофер Нолан",
-      age: 56,
-    },
-    {
-      name: "Лав Диас",
-      age: 47,
-    },
-    {
-      name: "Джеймс Кэмерон",
-      age: 65,
-    },
-  ],
-  movies: [
-    {
-      name: "Довод",
-      genre: "боевик",
-      directorId: "60473fdc3f57490ea4b0ee62",
-    },
-    {
-      name: "Бессонница",
-      genre: "триллер",
-      directorId: "60473fdc3f57490ea4b0ee62",
-    },
-    {
-      name: "Подмена",
-      genre: "драма",
-      directorId: "6047407b3f57490ea4b0ee68",
-    },
-    {
-      name: "Чудо на гудзоне",
-      genre: "драма",
-      directorId: "6047407b3f57490ea4b0ee68",
-    },
-    {
-      name: "Снайпер",
-      genre: "боевик",
-      directorId: "6047407b3f57490ea4b0ee68",
-    },
-  ],
-};
 
 const MainComponent = () => {
   const styleC = {
@@ -75,10 +31,9 @@ const MainComponent = () => {
           {selectContent === "movies" ? (
             <MoviesQuery title="Фильмы" />
           ) : (
-            <DirectorsQuery title="Режисеры" />
+            <GetDirectorsQuery title="Режисеры" />
           )}
         </div>
-        {/* <div className="main-component__pagination">PAGINATION</div> */}
       </div>
     </div>
   );

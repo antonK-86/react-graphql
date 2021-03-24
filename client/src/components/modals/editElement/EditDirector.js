@@ -1,37 +1,32 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import "../AddElementForm.css";
 import close from "../../assets/img/close.png";
-import { useMutation} from "@apollo/client";
-import { UpdateMovie} from "../queries";
-import { GetMovies } from "../../movies/MoviesQuery";
-import {SelectDirector} from "../AddMovieForm"
+import { useMutation } from "@apollo/client";
+import { UpdateDirector } from "../queries";
+import { GetDirectors } from "../../directors/DirectorsQuery";
 
+const EditDirector = ({ data, openModalEdit }) => {
+  console.log(data);
+  const directorId = data.id
+  const nameDirector = data.name;
+  const ageDirector = data.age;
 
-const EditElement = ({dataMovie, attr}) => {
+  const [name, setName] = useState(nameDirector);
+  const [age, setAge] = useState(ageDirector);
 
-  const id = attr.id;
-  const [name, setName] = useState(dataMovie.name);
-  const [genre, setGenre] = useState(dataMovie.genre);
-
-  const [directorId, setDirectorId] = useState(null);
-
-  const [updateMovie, { data }] = useMutation(UpdateMovie);
+  const [updateDirector, { }] = useMutation(UpdateDirector);
 
   const closeModal = () => {
-    attr.openModalEdit(false);
+    openModalEdit(false);
   };
-
-  const handleChange=(e)=>{
-    setDirectorId(e.target.value)
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateMovie({
-      variables: { id, name, genre, directorId },
-      refetchQueries: [{ query: GetMovies }],
+    updateDirector({
+      variables: { id:directorId, name, age },
+      refetchQueries: [{ query: GetDirectors }],
     }); // refetchQueries - для получения новых данных и их отрисовка
-    attr.openModalEdit(false);
+    openModalEdit(false);
   };
 
   return (
@@ -48,19 +43,16 @@ const EditElement = ({dataMovie, attr}) => {
             />
           </div>
           <div className="modal-form__input-block">
-            <label>Genre</label>
+            <label>Age</label>
             <input
               type="text"
               placeholder="Genre"
-              value={genre}
-              onChange={(e) => setGenre(e.target.value)}
+              value={age}
+              onChange={(e) => setAge(Number(e.target.value))}
             />
           </div>
-          <div className="modal-form__input-block">
-            <SelectDirector handleChange={handleChange} movieDirector ={dataMovie.director ? dataMovie.director : null}/> 
-          </div>
           <button type="submit" className="pressed-button">
-            Add movie
+            Update
           </button>
         </form>
         <div className="close" onClick={closeModal}>
@@ -71,4 +63,4 @@ const EditElement = ({dataMovie, attr}) => {
   );
 };
 
-export default EditElement;
+export default EditDirector;

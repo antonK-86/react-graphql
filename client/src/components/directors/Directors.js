@@ -5,7 +5,7 @@ import AddDirectorForm from "../modals/AddDirectorForm";
 import DeleteElement from "../modals/deleteElement/delElement";
 import { useMutation } from '@apollo/client';
 import { DeleteDirector } from "../modals/queries";
-import { GetDirectors } from "./DirectorsQuery";
+import { GetDirectorQuery, GetDirectors } from "./DirectorsQuery";
 
 const Directors = (props) => {
   const data = props.data;
@@ -15,11 +15,14 @@ const Directors = (props) => {
   //для отслеживания открытия модального окна(формы) добавления режисера
   const [isAddDirector, setIsAddDirector] = useState(false); 
 
+  //для отслеживания открытия модального окна(формы) изменения режисера
+  const [isEditDirector, setIsEditDirector] = useState(false);
+
   //для отслеживания открытия окна подтверждения удаления режисера
   const [isDelDirector, setIsDelDirector] = useState(false); 
 
   //для получения id элемента для изменения и удаления
-  const [id,setId] = useState(null);
+  const [directorId,setDirectorId] = useState(null);
 
   const [deleteDirector, { delData }] = useMutation(DeleteDirector);
 
@@ -27,13 +30,18 @@ const Directors = (props) => {
     setIsAddDirector(value);
   };
 
-  const openDelConfirm = (value,id) => {
+  const openModalEdit = (value,directorId) => {
+    setIsEditDirector(value);
+    setDirectorId(directorId);
+  };
+
+  const openDelConfirm = (value, directorId) => {
     setIsDelDirector(value);
-    setId(id)
+    setDirectorId(directorId)
   };
 
   const handleDelElement = ()=>{
-     deleteDirector({ variables: { id }, refetchQueries:[{query:GetDirectors}] }); // refetchQueries - для получения новых данных и их отрисовка
+     deleteDirector({ variables: { directorId }, refetchQueries:[{query:GetDirectors}] }); // refetchQueries - для получения новых данных и их отрисовка
      setIsDelDirector(false)
 }
 
@@ -60,7 +68,7 @@ const Directors = (props) => {
                 <td>{director.age}</td>
                 <td>{directfilms}</td>
                 <td>
-                  <EditBtn openDelElemConfirm={openDelConfirm} isMovie={false} id={director.id}/>
+                  <EditBtn openDelElemConfirm={openDelConfirm} openModalEdit={openModalEdit} isMovie={false} id={director.id}/>
                 </td>
               </tr>
             );
@@ -71,6 +79,7 @@ const Directors = (props) => {
         +
       </div>
       {isAddDirector ? <AddDirectorForm openModalAdd={openModalAdd} /> : null}
+      {isEditDirector ? <GetDirectorQuery openModalEdit={openModalEdit} directorId={directorId}/> : null}
       {isDelDirector ? <DeleteElement openDelConfirm={openDelConfirm} handleDelElement={handleDelElement}/> : null}
     </div>
   );
