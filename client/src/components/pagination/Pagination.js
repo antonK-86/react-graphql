@@ -1,8 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
+import "./Pagination.css"
 
-const Pagination=()=>{
+const Pagination=({pagesCount, changePageHandler, activePage})=>{
+
+    const pagesList=[]
+    for (let i=1;i<=pagesCount;i++) {
+        pagesList.push(i)
+    }
+
     return (
-        <div>pag</div>
+        <div className="paganation">
+            <div className="pagination__container">
+                {
+                   pagesList.map(i=><div key={i} className={`pagination__container_item ${activePage == i ? "activePage" : ""}`}  onClick={()=>changePageHandler(i)}>{i}</div>)
+                }
+            </div>
+        </div>
     )
 }
 

@@ -20,14 +20,14 @@ export const GetMovies = gql`
 
 const MoviesQuery = (props) => {
   const { loading, error, data } = useQuery(GetMovies);
-  const [activePage,setActivePage] = useState(2) 
+  const [activePage,setActivePage] = useState(1) 
   
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
   const allItemsCount = data.movies.length;
   const onPageItemsCount = 10;
-  const pagesCount = Math.round(allItemsCount/onPageItemsCount) 
+  const pagesCount = Math.ceil(allItemsCount/onPageItemsCount) 
   const start = activePage - 1
 
   const changePageHandler = (page)=>{
@@ -44,7 +44,7 @@ const MoviesQuery = (props) => {
     <>
       <Movies title={props.title} data={moviesList} />
       <div className="main-component__pagination">
-        <Pagination pagesCount={pagesCount} changePageHandler={changePageHandler}/>
+        <Pagination pagesCount={pagesCount} changePageHandler={changePageHandler} activePage={activePage}/>
       </div>
     </>
   );
