@@ -12,7 +12,7 @@ const Pagination=({pagesCount, changePageHandler, activePage})=>{
         <div className="paganation">
             <div className="pagination__container">
                 {
-                   pagesList.map(i=><div key={i} className={`pagination__container_item ${activePage == i ? "activePage" : ""}`}  onClick={()=>changePageHandler(i)}>{i}</div>)
+                   pagesList.map(i=><div key={i} className={`pagination__container_item ${activePage === i ? "activePage" : ""}`}  onClick={()=>changePageHandler(i)}>{i}</div>)
                 }
             </div>
         </div>

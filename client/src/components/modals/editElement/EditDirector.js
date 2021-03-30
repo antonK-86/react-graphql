@@ -6,7 +6,6 @@ import { UpdateDirector } from "../queries";
 import { GetDirectors } from "../../directors/DirectorsQuery";
 
 const EditDirector = ({ data, openModalEdit }) => {
-  console.log(data);
   const directorId = data.id
   const nameDirector = data.name;
   const ageDirector = data.age;
@@ -14,7 +13,7 @@ const EditDirector = ({ data, openModalEdit }) => {
   const [name, setName] = useState(nameDirector);
   const [age, setAge] = useState(ageDirector);
 
-  const [updateDirector, { }] = useMutation(UpdateDirector);
+  const [updateDirector] = useMutation(UpdateDirector);
 
   const closeModal = () => {
     openModalEdit(false);
@@ -56,7 +55,7 @@ const EditDirector = ({ data, openModalEdit }) => {
           </button>
         </form>
         <div className="close" onClick={closeModal}>
-          <img src={close} width="24px" height="24px" />
+          <img src={close} width="24px" height="24px" alt="img"/>
         </div>
       </div>
     </div>

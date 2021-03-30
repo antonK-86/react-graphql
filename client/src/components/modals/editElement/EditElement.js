@@ -15,7 +15,7 @@ const EditElement = ({dataMovie, attr}) => {
 
   const [directorId, setDirectorId] = useState(null);
 
-  const [updateMovie, { data }] = useMutation(UpdateMovie);
+  const [updateMovie] = useMutation(UpdateMovie);
 
   const closeModal = () => {
     attr.openModalEdit(false);
@@ -64,7 +64,7 @@ const EditElement = ({dataMovie, attr}) => {
           </button>
         </form>
         <div className="close" onClick={closeModal}>
-          <img src={close} width="24px" height="24px" />
+          <img src={close} width="24px" height="24px" alt="img"/>
         </div>
       </div>
     </div>

@@ -35,9 +35,8 @@ const MoviesQuery = (props) => {
   }
 
   const moviesList = data.movies.filter((item,index)=>{
-    if(index < onPageItemsCount*activePage && index>=onPageItemsCount*start) {
-      return item
-    }
+    if(index < onPageItemsCount*activePage && index>=onPageItemsCount*start) return item
+    return null
   }) //список выводимых фильмов
   
   return (

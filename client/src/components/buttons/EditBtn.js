@@ -28,6 +28,7 @@ const EditBtn = (props) => {
         src={btnEdit}
         width="32px"
         height="32px"
+        alt="img"
         onClick ={showPrompt}
       />
       {isShowPrompt ? (<div className="btn-edit-container__prompt-on-btn prompt-on-btn">

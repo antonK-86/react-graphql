@@ -20,7 +20,7 @@ const Movies = (props) => {
   //для получения id элемента для изменения и удаления
   const [id, setId] = useState(null);
 
-  const [deleteMovie, { delData }] = useMutation(DeleteMovie);
+  const [deleteMovie] = useMutation(DeleteMovie);
 
   const openModalAdd = (value) => {
     setIsAddMovie(value);
@@ -50,11 +50,11 @@ const Movies = (props) => {
         <caption>{props.title}</caption>
         <thead>
           <tr>
-            <th>№</th>
+            <th className="th7">№</th>
             <th onClick={() => requestSort("name")}>Название</th>
-            <th onClick={() => requestSort("genre")}>Жанр</th>
+            <th className="th20" onClick={() => requestSort("genre")}>Жанр</th>
             <th onClick={() => requestSort("directorId")}>Режисер</th>
-            <th></th>
+            <th className="th10"></th>
           </tr>
         </thead>
         <tbody>

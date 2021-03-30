@@ -32,7 +32,7 @@ const AddMovieForm = (props) => {
   const [genre, setGenre] = useState("");
   const [directorId, setDirectorId] = useState(null);
 
-  const [addMovie, { data }] = useMutation(AddMovie);
+  const [addMovie] = useMutation(AddMovie);
 
   const closeModal = () => {
     props.openModalAdd(false);
@@ -81,7 +81,7 @@ const AddMovieForm = (props) => {
           </button>
         </form>
         <div className="close" onClick={closeModal}>
-          <img src={close} width="24px" height="24px" />
+          <img src={close} width="24px" height="24px" alt="img"/>
         </div>
       </div>
     </div>

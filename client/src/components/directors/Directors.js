@@ -24,7 +24,7 @@ const Directors = (props) => {
   //для получения id элемента для изменения и удаления
   const [directorId,setDirectorId] = useState(null);
 
-  const [deleteDirector, { delData }] = useMutation(DeleteDirector);
+  const [deleteDirector] = useMutation(DeleteDirector);
 
   const openModalAdd = (value) => {
     setIsAddDirector(value);
@@ -51,11 +51,11 @@ const Directors = (props) => {
         <caption>{props.title}</caption>
         <thead>
           <tr>
-            <th>№</th>
+            <th className="th7">№</th>
             <th onClick={() => requestSort("name")}>Режисер</th>
-            <th onClick={() => requestSort("age")}>Возраст</th>
+            <th className="th20" onClick={() => requestSort("age")}>Возраст</th>
             <th>Movies</th>
-            <th></th>
+            <th className="th10"></th>
           </tr>
         </thead>
         <tbody>

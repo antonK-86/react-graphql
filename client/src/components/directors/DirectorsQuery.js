@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import Directors from "./Directors";
 import EditDirector from "../modals/editElement/EditDirector";
@@ -23,6 +23,10 @@ export const GetDirectorsQuery = (props) => {
   const { loading, error, data } = useQuery(GetDirectors);
   const [activePage,setActivePage] = useState(1) 
 
+  useEffect(()=>{
+
+  },[data])
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
@@ -39,6 +43,7 @@ export const GetDirectorsQuery = (props) => {
     if(index < onPageItemsCount*activePage && index>=onPageItemsCount*start) {
       return item
     }
+    return null
   }) //список выводимых фильмов
 
   return (

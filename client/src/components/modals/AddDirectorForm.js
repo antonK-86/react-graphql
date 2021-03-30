@@ -10,7 +10,7 @@ const AddElementForm =(props)=>{
     const [name, setName] = useState("")
     const [age, setAge] = useState("")
 
-    const [addDirector, { data }] = useMutation(AddDirector);
+    const [addDirector] = useMutation(AddDirector);
 
     const closeModal = () =>{
         props.openModalAdd(false)
@@ -32,7 +32,7 @@ const AddElementForm =(props)=>{
                     <input type="text" placeholder="Age" value={age} onChange={(e)=>setAge(e.target.value)}/></div>
                     <button type="submit" className="pressed-button">Add director</button>
                 </form>
-                <div className="close" onClick={closeModal}><img src={close} width="24px" height="24px"/></div>
+                <div className="close" onClick={closeModal}><img src={close} width="24px" height="24px" alt="img"/></div>
             </div>
         </div>
     )
