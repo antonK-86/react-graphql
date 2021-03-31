@@ -1,23 +1,3 @@
-// //тестовые данные
-// const movies = [
-//   //коллекция
-//   { id: 1, name: "Record", genre: "Crime", directorId: 2 },
-//   { id: 2, name: "Destr", genre: "Trash", directorId: 2 },
-//   { id: 3, name: "Springs", genre: "Melo", directorId: 4 },
-//   { id: 4, name: "Lovers", genre: "Ero", directorId: 3 },
-//   { id: 5, name: "Alien", genre: "Trash", directorId: 2 },
-//   { id: 6, name: "Simps", genre: "Comedy", directorId: 4 },
-//   { id: 7, name: "Night", genre: "Fear", directorId: 1 },
-// ];
-
-// const directors = [
-//   //коллекция, относится к movies
-//   { id: 1, name: "Viktor", age: "89" },
-//   { id: 2, name: "Klop", age: "34" },
-//   { id: 3, name: "Bykov", age: "50" },
-//   { id: 4, name: "Drey", age: "65" },
-// ];
-
 const graphQL = require("graphql");
 
 const {
@@ -168,7 +148,7 @@ const Mutation = new GraphQLObjectType({
 
 
 //создаем корневой запрос, внутри описываем все подзапросы
-//напр. подзапрос movie, описавыем что он должен содержать
+//напр. подзапрос movie, описываем что он должен содержать
 
 const Query = new GraphQLObjectType({
   name: "Query",

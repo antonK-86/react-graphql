@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import Directors from "./Directors";
 import EditDirector from "../modals/editElement/EditDirector";
@@ -22,10 +22,6 @@ export const GetDirectors = gql`
 export const GetDirectorsQuery = (props) => {
   const { loading, error, data } = useQuery(GetDirectors);
   const [activePage,setActivePage] = useState(1) 
-
-  useEffect(()=>{
-
-  },[data])
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;

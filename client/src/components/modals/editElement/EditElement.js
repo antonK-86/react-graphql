@@ -9,7 +9,7 @@ import {SelectDirector} from "../AddMovieForm"
 
 const EditElement = ({dataMovie, attr}) => {
 
-  const id = attr.id;
+  const id = dataMovie.id;
   const [name, setName] = useState(dataMovie.name);
   const [genre, setGenre] = useState(dataMovie.genre);
 
