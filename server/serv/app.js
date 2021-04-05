@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cors=require("cors"); //для разрешения соединения клиента с сервером
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 mongoose.connect(
   "mongodb+srv://antonk:221077ank@cluster1.qk1ky.mongodb.net/films?retryWrites=true&w=majority",
