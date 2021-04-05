@@ -52,9 +52,9 @@ const Directors = (props) => {
         <thead>
           <tr>
             <th className="th7">№</th>
-            <th onClick={() => requestSort("name")}>Режисер</th>
-            <th className="th20" onClick={() => requestSort("age")}>Возраст</th>
-            <th>Фильмы</th>
+            <th className="cursor" onClick={() => requestSort("name") }>Режисер</th>
+            <th className="th20 cursor" onClick={() => requestSort("age")}>Возраст</th>
+            <th className="cursor">Фильмы</th>
             <th className="th10"></th>
           </tr>
         </thead>

@@ -51,9 +51,9 @@ const Movies = (props) => {
         <thead>
           <tr>
             <th className="th7">№</th>
-            <th onClick={() => requestSort("name")}>Название</th>
-            <th className="th20" onClick={() => requestSort("genre")}>Жанр</th>
-            <th onClick={() => requestSort("directorId")}>Режисер</th>
+            <th className="cursor" onClick={() => requestSort("name")}>Название</th>
+            <th className="th20 cursor" onClick={() => requestSort("genre")}>Жанр</th>
+            <th className="cursor" onClick={() => requestSort("directorId")}>Режисер</th>
             <th className="th10"></th>
           </tr>
         </thead>
