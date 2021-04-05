@@ -65,7 +65,7 @@ const Movies = (props) => {
               <td>{movie.genre}</td>
               <td>{movie.director && movie.director.name}</td> 
               <td>
-                <EditBtn openDelElemConfirm={openDelConfirm} openModalEdit={openModalEdit} isMovie={true} id={movie.id}/>
+                <EditBtn openDelElemConfirm={openDelConfirm} openModalEdit={openModalEdit} id={movie.id}/>
               </td>
             </tr>
           ))}

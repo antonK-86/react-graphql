@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import useSortableData from "../hooks/useSortableData";
 import EditBtn from "../buttons/EditBtn";
 import AddDirectorForm from "../modals/AddDirectorForm";
-import DeleteElement from "../modals/deleteElement/delElement";
-import { useMutation } from '@apollo/client';
 import { DeleteDirector } from "../modals/queries";
+import { useMutation } from '@apollo/client';
 import { GetDirectorQuery, GetDirectors } from "./DirectorsQuery";
+import DeleteElement from "../modals/deleteElement/delElement";
 
 const Directors = (props) => {
   const data = props.data;
@@ -30,18 +30,19 @@ const Directors = (props) => {
     setIsAddDirector(value);
   };
 
-  const openModalEdit = (value,directorId) => {
+  const openModalEdit = (value,id) => {
     setIsEditDirector(value);
-    setDirectorId(directorId);
+    setDirectorId(id);
   };
 
-  const openDelConfirm = (value, directorId) => {
+  const openDelConfirm = (value, id) => {
     setIsDelDirector(value);
-    setDirectorId(directorId)
+    setDirectorId(id)
   };
 
   const handleDelElement = ()=>{
-     deleteDirector({ variables: { directorId }, refetchQueries:[{query:GetDirectors}] }); // refetchQueries - для получения новых данных и их отрисовка
+    console.log(directorId);
+     deleteDirector({ variables: { id:directorId }, refetchQueries:[{query:GetDirectors}] }); // refetchQueries - для получения новых данных и их отрисовка
      setIsDelDirector(false)
 }
 
@@ -68,7 +69,7 @@ const Directors = (props) => {
                 <td>{director.age}</td>
                 <td>{directfilms}</td>
                 <td>
-                  <EditBtn openDelElemConfirm={openDelConfirm} openModalEdit={openModalEdit} isMovie={false} id={director.id}/>
+                  <EditBtn openDelElemConfirm={openDelConfirm} openModalEdit={openModalEdit} id={director.id}/>
                 </td>
               </tr>
             );

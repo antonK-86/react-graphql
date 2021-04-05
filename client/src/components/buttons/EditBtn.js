@@ -7,7 +7,7 @@ const EditBtn = (props) => {
   
   const showPrompt = () => {
     setIsShowPrompt(true)
-    setTimeout(()=>setIsShowPrompt(false), 3000)
+    //setTimeout(()=>setIsShowPrompt(false), 3000)
   }
 
   const handleClickEdit=()=>{
@@ -15,8 +15,8 @@ const EditBtn = (props) => {
     setIsShowPrompt(false)
   }
   
-
   const handleClickDel=()=>{
+    
     props.openDelElemConfirm(true, props.id);
     setIsShowPrompt(false)
   }

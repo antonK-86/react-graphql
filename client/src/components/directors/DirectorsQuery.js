@@ -40,7 +40,7 @@ export const GetDirectorsQuery = (props) => {
       return item
     }
     return null
-  }) //список выводимых фильмов
+  }) //список выводимых режисеров
 
   return (
     <>
