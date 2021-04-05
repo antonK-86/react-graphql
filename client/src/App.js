@@ -5,7 +5,7 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: "http://salty-crag-83095.herokuapp.com/graphql",
+  uri: "https//salty-crag-83095.herokuapp.com/graphql",
 });
 
 function App() {
