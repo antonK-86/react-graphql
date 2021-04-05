@@ -26,11 +26,11 @@ const AddElementForm =(props)=>{
         <div className="modal">
             <div className="modal-container">
                 <form className="modal-form" onSubmit={handleSubmit}>
-                    <div className="modal-form__input-block"><label>Name</label>
+                    <div className="modal-form__input-block"><label>Режисер</label>
                     <input type="text" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)}/></div>
-                    <div className="modal-form__input-block"><label>Age</label>
+                    <div className="modal-form__input-block"><label>Возраст</label>
                     <input type="text" placeholder="Age" value={age} onChange={(e)=>setAge(e.target.value)}/></div>
-                    <button type="submit" className="pressed-button">Add director</button>
+                    <button type="submit" className="pressed-button">Добавить режисера</button>
                 </form>
                 <div className="close" onClick={closeModal}><img src={close} width="24px" height="24px" alt="img"/></div>
             </div>

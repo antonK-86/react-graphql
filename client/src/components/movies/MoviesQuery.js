@@ -22,7 +22,7 @@ const MoviesQuery = (props) => {
   const { loading, error, data } = useQuery(GetMovies);
   const [activePage,setActivePage] = useState(1) 
   
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Загружаю...</p>;
   if (error) return <p>Error :(</p>;
 
   const allItemsCount = data.movies.length;

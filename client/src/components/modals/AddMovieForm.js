@@ -8,7 +8,7 @@ import { GetMovies } from "../movies/MoviesQuery";
 
 export const SelectDirector = ({handleChange, movieDirector}) => {
   const { loading, error, data } = useQuery(GetDirectors);
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Загружаю...</p>;
   if (error) return <p>Error :(</p>;
   let id = null
   let name = null
@@ -16,7 +16,7 @@ export const SelectDirector = ({handleChange, movieDirector}) => {
   const items = data.directors;
   return (
     <label>
-      <p>Выберете режисера</p>
+      <p>Выбирете режисера</p>
       <select name="directors" onChange={handleChange}>
         <option name="null" value={id}>{name}</option>
         {items.map((d) => {

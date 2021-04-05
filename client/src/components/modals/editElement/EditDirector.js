@@ -33,7 +33,7 @@ const EditDirector = ({ data, openModalEdit }) => {
       <div className="modal-container">
         <form className="modal-form" onSubmit={handleSubmit}>
           <div className="modal-form__input-block">
-            <label>Name</label>
+            <label>Имя режисера</label>
             <input
               type="text"
               placeholder="Name"
@@ -42,7 +42,7 @@ const EditDirector = ({ data, openModalEdit }) => {
             />
           </div>
           <div className="modal-form__input-block">
-            <label>Age</label>
+            <label>Возраст</label>
             <input
               type="text"
               placeholder="Genre"
@@ -51,7 +51,7 @@ const EditDirector = ({ data, openModalEdit }) => {
             />
           </div>
           <button type="submit" className="pressed-button">
-            Update
+            Обновить данные
           </button>
         </form>
         <div className="close" onClick={closeModal}>

@@ -41,7 +41,6 @@ const Directors = (props) => {
   };
 
   const handleDelElement = ()=>{
-    console.log(directorId);
      deleteDirector({ variables: { id:directorId }, refetchQueries:[{query:GetDirectors}] }); // refetchQueries - для получения новых данных и их отрисовка
      setIsDelDirector(false)
 }
@@ -55,7 +54,7 @@ const Directors = (props) => {
             <th className="th7">№</th>
             <th onClick={() => requestSort("name")}>Режисер</th>
             <th className="th20" onClick={() => requestSort("age")}>Возраст</th>
-            <th>Movies</th>
+            <th>Фильмы</th>
             <th className="th10"></th>
           </tr>
         </thead>

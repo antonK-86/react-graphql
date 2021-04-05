@@ -39,7 +39,7 @@ const EditElement = ({dataMovie, attr}) => {
       <div className="modal-container">
         <form className="modal-form" onSubmit={handleSubmit}>
           <div className="modal-form__input-block">
-            <label>Name</label>
+            <label>Название фильма</label>
             <input
               type="text"
               placeholder="Name"
@@ -48,7 +48,7 @@ const EditElement = ({dataMovie, attr}) => {
             />
           </div>
           <div className="modal-form__input-block">
-            <label>Genre</label>
+            <label>Жанр</label>
             <input
               type="text"
               placeholder="Genre"
@@ -60,7 +60,7 @@ const EditElement = ({dataMovie, attr}) => {
             <SelectDirector handleChange={handleChange} movieDirector ={dataMovie.director ? dataMovie.director : null}/> 
           </div>
           <button type="submit" className="pressed-button">
-            Add movie
+            Добавить фильм
           </button>
         </form>
         <div className="close" onClick={closeModal}>

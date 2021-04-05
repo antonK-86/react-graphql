@@ -23,7 +23,7 @@ export const GetDirectorsQuery = (props) => {
   const { loading, error, data } = useQuery(GetDirectors);
   const [activePage,setActivePage] = useState(1) 
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Загружаю...</p>;
   if (error) return <p>Error :(</p>;
 
   const allItemsCount = data.directors.length;
@@ -54,7 +54,7 @@ export const GetDirectorsQuery = (props) => {
 
 export const GetDirectorQuery = ({openModalEdit,directorId}) => {
   const { loading, error, data } = useQuery(GetDirector,{variables:{id:directorId}});
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Загружаю...</p>;
   if (error) return <p>Error :(</p>;
 
   return (

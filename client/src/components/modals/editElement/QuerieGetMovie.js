@@ -7,7 +7,7 @@ import { GetMovie } from "../queries";
 const QueryGetMovie = (props) => {
   //получаем данные фильма для внесения изменений
   const { loading, data } = useQuery(GetMovie,{variables:{id:props.id}});
-  if (loading) return <p>Loading...</p>
+  if (loading) return <p>Загружаю...</p>
   return (
     <>
       <EditElement dataMovie={data.movie} attr={props}/>
