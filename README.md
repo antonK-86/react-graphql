@@ -9,6 +9,7 @@ Apollo
 Таблица сортируемая по возрастанию, убыванию.
 Предусмотрен постраничный вывод данных.
 Сервер размещен на Heroku.
+Github Pages: https://antonk-86.github.io/react-graphql/
 
 
 Запросы в GraphiQL
